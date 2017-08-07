@@ -4,7 +4,6 @@ app = Flask(__name__)
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
 
-
 @app.route("/")
 
 def index():
