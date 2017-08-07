@@ -11,10 +11,6 @@
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="images/android-desktop.png">
-
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -34,7 +30,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
   <!--<link rel="stylesheet" href="/static/style.css?version=3">-->
-  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="/static/style.css">
   <title>Set Brewpi Wifi</title>
   <style>
     #view-source {
@@ -56,31 +52,49 @@
       <div class="demo-container mdl-grid">
         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
         <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-          <!-- Breadcrumbs -->
-          <!--<div class="demo-crumbs mdl-color-text--grey-500">
-              Set Brewpi Wifi
-            </div>-->
+          <div id="errors">
+            <!-- Session Messahe -->
+            <span class="mdl-chip">
+              <span class="mdl-chip__text">{{ session["message"] }}</span>
+            </span>
+          </div>
           <!-- Form Card -->
           <div class="main-form">
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-              <form action="/set-wifi" method="POST">
+            <form action="/set-wifi" id="form" method="POST">
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title">
-                  <h2 class="mdl-card__title-text">Set Brewpi Wifi</h2>
+                  <h2 class="mdl-card__title-text" style="font-family: 'Raleway'">Set Brewpi Wifi</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
                   <!-- Form -->
                   <!-- Textfield with Floating Label -->
+                  <!-- SSID Tooltip -->
+                  <div class="mdl-tooltip mdl-tooltip--large" for="ssid">
+                    SSID of the network you want to connect to, e.g. "TheSweeneys"
+                  </div>
+                  <!-- SSID Text Field -->
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" name="ssid" type="text" id="ssid">
                     <label class="mdl-textfield__label" for="ssid">SSID</label>
                   </div>
+                  <!-- Password Tooltip -->
+                  <div class="mdl-tooltip mdl-tooltip--large" for="password">
+                    Passphrase for the network you want to connect to
+                  </div>
+                  <!-- Password Field -->
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" name="password" type="text" id="password">
                     <label class="mdl-textfield__label" for="password">Passphrase</label>
                   </div>
+                  <!-- Priority Tooltip -->
+                  <div class="mdl-tooltip mdl-tooltip--large" for="priority">
+                    The network entry with the highest priority will be selected
+                  </div>
+                  <!-- Priority Text Field -->
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" name="confirm_password" type="text" id="confirm_password">
-                    <label class="mdl-textfield__label" for="confirm_password">Confirm Passphrase</label>
+                    <input class="mdl-textfield__input" name="priority" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="priority">
+                    <label class="mdl-textfield__label" for="priority">Priority</label>
+                    <span class="mdl-textfield__error">That's not a number...</span>
                   </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
@@ -91,10 +105,11 @@
                 </div>
                 <div class="mdl-card__menu">
                   <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                  <i class="material-icons">share</i>
-                </button>
-              </form>
+                    <i class="material-icons">share</i>
+                  </button>
+                </div>
               </div>
+            </form>
             </div>
           </div>
         </div>

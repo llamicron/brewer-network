@@ -71,3 +71,13 @@
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
 }
+
+.mdl-textfield__input {
+  width: 100%;
+}
+
+#errors {
+  font-size: 24px;
+  margin-bottom: 2em;
+  text-align: center;
+}
