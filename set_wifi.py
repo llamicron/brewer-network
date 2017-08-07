@@ -4,11 +4,12 @@ app = Flask(__name__)
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
 
-session["message"] = ""
 
 @app.route("/")
 
 def index():
+    if not session["message"]:
+        session["message"] = "Ready"
     return render_template("set_wifi.html", errors = session["message"])
 
 @app.route("/set-wifi", methods = ["POST", "GET"])
