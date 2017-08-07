@@ -8,9 +8,10 @@ wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
 @app.route("/")
 
 def index():
-    if not session["message"]:
-        session["message"] = "Ready"
-    return render_template("set_wifi.html", errors = session["message"])
+    try:
+        return render_template("set_wifi.html", errors = session["message"])
+    except KeyError as e:
+        return render_template("set_wifi.html", errors = "")
 
 @app.route("/set-wifi", methods = ["POST", "GET"])
 
