@@ -30,4 +30,4 @@ def write_wpa_supplicant(ssid, password, priority):
     wpa.write("\nnetwork={\n\tssid=\"%s\"\n\tpsk=\"%s\"\n\tpriority=%s\n}" % (ssid, password, priority))
 
 if __name__ == '__main__':
-    app.run()
+    app.run("0.0.0.0", 5000)
