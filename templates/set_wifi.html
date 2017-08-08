@@ -84,12 +84,41 @@
   </section>
   <!-- End Hero-->
 
-  <section id="about" class="hero is-info is-medium is-fullheight">
+  <section id="about" class="hero is-info is-medium">
     <div class="hero-body">
       <div class="container">
         <h2 class="subtitle">
             The Brewpi acts as a WAP (Wireless Access Point) so it can be accessed without a network connection. You can use this tool to set wireless credentials to make a connection.
         </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- File Contents -->
+  <section class="hero is-dark is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <article class="message is-success">
+          <div class="message-header">
+            <p>{{ file }}</p>
+          </div>
+          <div class="message-body">
+            <code>
+              <!-- I had to do some funky shit with this. Sorry. -->
+              {% for line in file_lines %}
+                {% if "=" in line and "network" not in line %}
+                  &nbsp;&nbsp;{{ line }}
+                {% elif line == "}" %}
+                  {{ line }}
+                  <br>
+                {% else %}
+                  {{ line }}
+                {% endif %}
+                <br>
+              {% endfor %}
+            </code>
+          </div>
+        </article>
       </div>
     </div>
   </section>
