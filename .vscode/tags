@@ -5,6 +5,7 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 Flask	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
+SetWifiTestCase	../set_wifi_tests.py	/^class SetWifiTestCase(unittest.TestCase):$/;"	kind:class	line:12
 app	../set_wifi.py	/^app = Flask(__name__)$/;"	kind:variable	line:2
 check_connection	../network.py	/^def check_connection():$/;"	kind:function	line:3
 flash	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
@@ -12,14 +13,26 @@ get_file_contents	../set_wifi.py	/^def get_file_contents(filename):$/;"	kind:fun
 handle_form_post	../set_wifi.py	/^def handle_form_post():$/;"	kind:function	line:18
 index	../set_wifi.py	/^def index():$/;"	kind:function	line:9
 network.py	../network.py	1;"	kind:file	line:1
+os	../set_wifi_tests.py	/^import os$/;"	kind:namespace	line:1
 redirect	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 render_template	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 request	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 session	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
+setUp	../set_wifi_tests.py	/^    def setUp(self):$/;"	kind:member	line:13
+set_wifi	../set_wifi_tests.py	/^import set_wifi$/;"	kind:namespace	line:6
 set_wifi.py	../set_wifi.py	1;"	kind:file	line:1
-set_wifi_tests.py	../templates/set_wifi_tests.py	1;"	kind:file	line:1
+set_wifi_tests.py	../set_wifi_tests.py	1;"	kind:file	line:1
+sys	../set_wifi_tests.py	/^import sys$/;"	kind:namespace	line:2
+tearDown	../set_wifi_tests.py	/^    def tearDown(self):$/;"	kind:member	line:57
+tempfile	../set_wifi_tests.py	/^import tempfile$/;"	kind:namespace	line:4
+test_home_page	../set_wifi_tests.py	/^    def test_home_page(self):$/;"	kind:member	line:19
+test_submit_form	../set_wifi_tests.py	/^    def test_submit_form(self):$/;"	kind:member	line:23
+test_submit_form_failure	../set_wifi_tests.py	/^    def test_submit_form_failure(self):$/;"	kind:member	line:34
+test_supplicant_window	../set_wifi_tests.py	/^    def test_supplicant_window(self):$/;"	kind:member	line:44
+test_wpa_supplicant	../set_wifi_tests.py	/^test_wpa_supplicant = os.path.dirname($/;"	kind:variable	line:8
+time	../set_wifi_tests.py	/^import time$/;"	kind:namespace	line:5
+unittest	../set_wifi_tests.py	/^import unittest$/;"	kind:namespace	line:3
 url_for	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 urllib2	../network.py	/^import urllib2$/;"	kind:namespace	line:1
 validate_form_submission	../set_wifi.py	/^def validate_form_submission(form):$/;"	kind:function	line:38
-wpa_supplicant	../set_wifi.py	/^wpa_supplicant = "\/etc\/wpa_supplicant\/wpa_supplicant.conf"$/;"	kind:variable	line:5
 write_wpa_supplicant	../set_wifi.py	/^def write_wpa_supplicant(ssid, password, priority):$/;"	kind:function	line:33
