@@ -1,0 +1,14 @@
+{
+  "version": "0.1.0",
+  "tasks": [
+    {
+      "taskName": "Unit Test",
+      "suppressTaskName": true,
+      "command": "python",
+      "args": [
+        "set_wifi_tests.py"
+      ],
+      "isTestCommand": true
+    }
+  ]
+}

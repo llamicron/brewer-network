@@ -2,15 +2,15 @@ from flask import Flask, request, render_template, url_for, redirect, session, f
 app = Flask(__name__)
 
 app.secret_key = 'A0Zr98j/3yXR~XHh!jmN[LWx/,0RT'
-wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
-# wpa_supplicant = "/Users/llamicron/test"
+# app.wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
+app.wpa_supplicant = "/Users/llamicron/test"
 
 @app.route("/")
 def index():
     return render_template(
         "set_wifi.html",
-        file=wpa_supplicant,
-        file_lines=get_file_contents(wpa_supplicant)
+        file=app.wpa_supplicant,
+        file_lines=get_file_contents(app.wpa_supplicant)
     )
 
 
@@ -27,12 +27,12 @@ def handle_form_post():
         flash("Successful. Restart your Pi to connect.")
     except IOError as ex:
         session["error"] = True
-        flash("You don't have permission to write to %s. Please run this web server with 'sudo'" % wpa_supplicant)
+        flash("You don't have permission to write to %s. Please run this web server with 'sudo'" % app.wpa_supplicant)
     return redirect("/")
 
 def write_wpa_supplicant(ssid, password, priority):
     # Write to wpa_supplicant
-    wpa = open(wpa_supplicant, "a")
+    wpa = open(app.wpa_supplicant, "a")
     wpa.write("\nnetwork={\n\tssid=\"%s\"\n\tpsk=\"%s\"\n\tpriority=%s\n}" % (ssid, password, priority))
 
 def validate_form_submission(form):
