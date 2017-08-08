@@ -81,3 +81,11 @@
   margin-bottom: 2em;
   text-align: center;
 }
+
+#scroll-down-column {
+  text-align: center;
+}
+
+#scroll-down-button {
+  width: 40%;
+}

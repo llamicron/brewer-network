@@ -1,26 +1,24 @@
-from flask import Flask, request, render_template, url_for, redirect, session
+from flask import Flask, request, render_template, url_for, redirect, session, flash
 app = Flask(__name__)
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
+# wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
+wpa_supplicant = "/Users/llamicron/test"
 
 @app.route("/")
 
 def index():
-    try:
-        return render_template("set_wifi.html", errors = session["message"])
-    except KeyError as e:
-        return render_template("set_wifi.html", errors = "")
+    return render_template("set_wifi.html", file = wpa_supplicant)
 
 @app.route("/set-wifi", methods = ["POST", "GET"])
 
 def handle_form_post():
     for field, value in request.form.iteritems():
         if not value:
-            session["message"] = "Please fill out the form below"
+            flash("Please fill out the form to the right ->")
             return redirect("/")
     write_wpa_supplicant(request.form['ssid'], request.form["password"], request.form['priority'])
-    session["message"] = "Successful. Restart your Pi to connect"
+    flash("Successful. Restart your Pi to connect")
     return redirect("/")
 
 def write_wpa_supplicant(ssid, password, priority):

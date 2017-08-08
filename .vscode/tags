@@ -4,4 +4,19 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-app.py	../app.py	1;"	kind:file	line:1
+Flask	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
+app	../set_wifi.py	/^app = Flask(__name__)$/;"	kind:variable	line:2
+check_connection	../network.py	/^def check_connection():$/;"	kind:function	line:3
+flash	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
+handle_form_post	../set_wifi.py	/^def handle_form_post():$/;"	kind:function	line:15
+index	../set_wifi.py	/^def index():$/;"	kind:function	line:10
+network.py	../network.py	1;"	kind:file	line:1
+redirect	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
+render_template	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
+request	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
+session	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
+set_wifi.py	../set_wifi.py	1;"	kind:file	line:1
+url_for	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
+urllib2	../network.py	/^import urllib2$/;"	kind:namespace	line:1
+wpa_supplicant	../set_wifi.py	/^wpa_supplicant = "\/Users\/llamicron\/test"$/;"	kind:variable	line:6
+write_wpa_supplicant	../set_wifi.py	/^def write_wpa_supplicant(ssid, password, priority):$/;"	kind:function	line:24
