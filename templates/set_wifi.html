@@ -24,7 +24,17 @@
                 {% for message in messages %}
                   <hr>
                   <h2 class="subtitle">
-                    {{ message }}
+                    {% if session["error"] %}
+                      <article class="message is-danger">
+                        <div class="message-body">
+                          {{ message }}
+                        </div>
+                      </article>
+                    {% else %}
+                      <strong>
+                        {{ message }}
+                      </strong>
+                    {% endif %}
                   </h2>
                 {% endfor %}
               {% endif %}
