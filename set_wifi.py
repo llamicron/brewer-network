@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, url_for, redirect, session, flash
 app = Flask(__name__)
 
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+app.secret_key = 'A0Zr98j/3yXR~XHh!jmN[LWx/,0RT'
 # wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
 wpa_supplicant = "/Users/llamicron/test"
 
