@@ -3,15 +3,19 @@ import sys
 import unittest
 import tempfile
 import time
-import set_wifi
+
+# Allows for importing from parent directory
+sys.path.insert(1, os.path.join(sys.path[0], '..'))
+
+import brewer_network
 
 test_wpa_supplicant = os.path.dirname(
     os.path.realpath(__file__)) + "/test_wpa_supplicant"
 
 
-class SetWifiTestCase(unittest.TestCase):
+class BrewerNetworkTestCase(unittest.TestCase):
     def setUp(self):
-        self.app = set_wifi.app.test_client()
+        self.app = brewer_network.app.test_client()
         if not os.path.isfile(test_wpa_supplicant):
             open(test_wpa_supplicant, "w")
         self.app.application.wpa_supplicant = test_wpa_supplicant

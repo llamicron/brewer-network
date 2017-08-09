@@ -1,9 +1,10 @@
 from flask import Flask, request, render_template, url_for, redirect, session, flash
+import os
 app = Flask(__name__)
 
 app.secret_key = 'A0Zr98j/3yXR~XHh!jmN[LWx/,0RT'
 # app.wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
-app.wpa_supplicant = "/Users/llamicron/test"
+app.wpa_supplicant = os.path.dirname(os.path.realpath(__file__)) + "/test_wpa_supplicant"
 
 @app.route("/")
 def index():
@@ -14,7 +15,7 @@ def index():
     )
 
 
-@app.route("/write_supplicant", methods = ["POST"])
+@app.route("/write-supplicant", methods = ["POST"])
 def handle_form_post():
     if not validate_form_submission(request.form):
         session['error'] = True
@@ -31,7 +32,6 @@ def handle_form_post():
     return redirect("/")
 
 def write_wpa_supplicant(ssid, password, priority):
-    # Write to wpa_supplicant
     wpa = open(app.wpa_supplicant, "a")
     wpa.write("\nnetwork={\n\tssid=\"%s\"\n\tpsk=\"%s\"\n\tpriority=%s\n}" % (ssid, password, priority))
 
