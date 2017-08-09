@@ -3,10 +3,8 @@ import os
 app = Flask(__name__)
 
 app.secret_key = 'A0Zr98j/3yXR~XHh!jmN[LWx/,0RT'
-# app.wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
+app.wpa_supplicant = "/etc/wpa_supplicant/wpa_supplicant.conf"
 app.webhook_file = os.path.expanduser("~") + "/slack.webhook"
-app.wpa_supplicant = os.path.dirname(
-    os.path.realpath(__file__)) + "/test_wpa_supplicant"
 
 
 @app.route("/")
