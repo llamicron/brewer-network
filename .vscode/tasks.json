@@ -2,11 +2,12 @@
   "version": "0.1.0",
   "tasks": [
     {
-      "taskName": "test",
+      "taskName": "brewer_network",
       "suppressTaskName": true,
       "command": "python",
       "args": [
         "tests/brewer_network_tests.py",
+        "BrewerNetworkTestCase.test_slack_webhook_submission"
       ],
       "isTestCommand": true
     }

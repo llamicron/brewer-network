@@ -1,2 +1,3 @@
 *.pyc
-test_wpa_supplicant
+tests/test_wpa_supplicant
+tests/slack.webhook

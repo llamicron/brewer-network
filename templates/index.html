@@ -9,6 +9,7 @@
   <script src="https://use.fontawesome.com/cc35b7b927.js"></script>
   <script src="/static/smooth-scroll.min.js"></script>
 </head>
+
 <body>
   <!-- Main Hero -->
   <section id="main" class="hero is-primary is-fullheight">
@@ -19,35 +20,47 @@
             <h1 class="title">
               Set Brewpi Wifi
             </h1>
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                {% for message in messages %}
-                  <hr>
-                  <h2 class="subtitle">
-                    {% if session["error"] %}
-                      <article class="message is-danger">
-                        <div class="message-body">
-                          {{ message }}
-                        </div>
-                      </article>
-                    {% else %}
-                      <strong>
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+            <hr>
+            <h2 class="subtitle">
+              {% if session["error"] %}
+              <article class="message is-danger">
+                <div class="message-body">
+                  {{ message }}
+                </div>
+              </article>
+              {% else %}
+              <strong>
                         {{ message }}
-                      </strong>
-                    {% endif %}
-                  </h2>
-                {% endfor %}
-              {% endif %}
-            {% endwith %}
+                      </strong> {% endif %}
+            </h2>
+            {% endfor %} {% endif %} {% endwith %}
 
-             <!--Scroll down button -->
+            <!--Scroll down button -->
             <a id="scroll-down-button" data-scroll href="#supplicant-window" class="button is-warning">
               <i class="fa fa-chevron-down"></i>
             </a>
           </div>
           <div class="column">
-            <!-- Form -->
             <div class="box">
+              <!-- Write Webhook Form -->
+              <form action="/write-webhook" method="POST">
+                <!-- Webhook Text Field -->
+                <div class="field">
+                  <label class="label">Slack Webhook</label>
+                  <div class="control">
+                    <input class="input" name="webhook" type="text" placeholder="Slack Webhook">
+                  </div>
+                </div>
+
+                <!-- Webhook Form Submit Button -->
+                <button type="submit" class="button is-primary">
+                  Submit
+                </button>
+              </form>
+            </div>
+            <div class="box">
+              <!-- Write Supplicant Form -->
               <form action="/write-supplicant" method="POST">
                 <!-- SSID Text Field-->
                 <div class="field">
@@ -73,6 +86,12 @@
                   </div>
                 </div>
 
+                <article class="message is-warning">
+                  <div class="message-body">
+                    You need to set the Slack webhook <i>before</i> submitting wireless credentials. This site will not
+                    be accessable after submitting this form.
+                  </div>
+                </article>
                 <!-- Submit Button -->
                 <div class="columns">
                   <div class="column">
@@ -100,7 +119,8 @@
     <div class="hero-body">
       <div class="container">
         <h2 class="subtitle">
-            The Brewpi acts as a WAP (Wireless Access Point) so it can be accessed without a network connection. You can use this tool to set wireless credentials to make a connection.
+          The Brewpi acts as a WAP (Wireless Access Point) so it can be accessed without a network connection. You can use this tool
+          to set wireless credentials to make a connection.
         </h2>
       </div>
     </div>
@@ -147,9 +167,10 @@
   <!-- End Hero -->
 
 </body>
+
 </html>
 
 <script>
   var scroll = new SmoothScroll('a[href*="#"]');
-</script>
 
+</script>

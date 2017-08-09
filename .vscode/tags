@@ -4,12 +4,12 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+BrewerNetworkTestCase	../tests/brewer_network_tests.py	/^class BrewerNetworkTestCase(unittest.TestCase):$/;"	kind:class	line:16
 Flask	../brewer_network.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
-SetWifiTestCase	../tests/brewer_network_tests.py	/^class SetWifiTestCase(unittest.TestCase):$/;"	kind:class	line:12
-app	../brewer_network.py	/^app = Flask(__name__)$/;"	kind:variable	line:2
+app	../brewer_network.py	/^app = Flask(__name__)$/;"	kind:variable	line:3
 author	../setup.py	/^    author='Luke Sweeney',$/;"	kind:variable	line:7
 author_email	../setup.py	/^    author_email='luke@thesweeneys.org',$/;"	kind:variable	line:8
-brewer_network	../tests/brewer_network_tests.py	/^from .. import brewer_network$/;"	kind:namespace	line:6
+brewer_network	../tests/brewer_network_tests.py	/^import brewer_network$/;"	kind:namespace	line:10
 brewer_network.py	../brewer_network.py	1;"	kind:file	line:1
 brewer_network_tests.py	../tests/brewer_network_tests.py	1;"	kind:file	line:1
 check_connection	../internet.py	/^def check_connection():$/;"	kind:function	line:6
@@ -17,34 +17,36 @@ classifiers	../setup.py	/^    classifiers=[],$/;"	kind:variable	line:13
 description	../setup.py	/^    description='The networking portion of brewer',$/;"	kind:variable	line:6
 download_url	../setup.py	/^    download_url=$/;"	kind:variable	line:10
 flash	../brewer_network.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
-get_file_contents	../brewer_network.py	/^def get_file_contents(filename):$/;"	kind:function	line:43
-handle_form_post	../brewer_network.py	/^def handle_form_post():$/;"	kind:function	line:18
-index	../brewer_network.py	/^def index():$/;"	kind:function	line:9
+get_file_contents	../brewer_network.py	/^def get_file_contents(filename):$/;"	kind:function	line:44
+handle_form_post	../brewer_network.py	/^def handle_form_post():$/;"	kind:function	line:19
+index	../brewer_network.py	/^def index():$/;"	kind:function	line:10
 internet.py	../internet.py	1;"	kind:file	line:1
 keywords	../setup.py	/^    keywords=['brewer', 'network'],  # arbitrary keywords$/;"	kind:variable	line:12
 name	../setup.py	/^    name='brewer-network',$/;"	kind:variable	line:3
+os	../brewer_network.py	/^import os$/;"	kind:namespace	line:2
 os	../tests/brewer_network_tests.py	/^import os$/;"	kind:namespace	line:1
 packages	../setup.py	/^    packages=['brewer-network'],  # this must be the same as the name above$/;"	kind:variable	line:4
 redirect	../brewer_network.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 render_template	../brewer_network.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 request	../brewer_network.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 session	../brewer_network.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
-setUp	../tests/brewer_network_tests.py	/^    def setUp(self):$/;"	kind:member	line:13
+setUp	../tests/brewer_network_tests.py	/^    def setUp(self):$/;"	kind:member	line:17
 setup	../setup.py	/^from distutils.core import setup$/;"	kind:namespace	line:1
 setup.py	../setup.py	1;"	kind:file	line:1
 sys	../tests/brewer_network_tests.py	/^import sys$/;"	kind:namespace	line:2
-tearDown	../tests/brewer_network_tests.py	/^    def tearDown(self):$/;"	kind:member	line:57
+tearDown	../tests/brewer_network_tests.py	/^    def tearDown(self):$/;"	kind:member	line:71
 tempfile	../tests/brewer_network_tests.py	/^import tempfile$/;"	kind:namespace	line:4
-test_home_page	../tests/brewer_network_tests.py	/^    def test_home_page(self):$/;"	kind:member	line:19
-test_submit_form	../tests/brewer_network_tests.py	/^    def test_submit_form(self):$/;"	kind:member	line:23
-test_submit_form_failure	../tests/brewer_network_tests.py	/^    def test_submit_form_failure(self):$/;"	kind:member	line:34
-test_supplicant_window	../tests/brewer_network_tests.py	/^    def test_supplicant_window(self):$/;"	kind:member	line:44
-test_wpa_supplicant	../tests/brewer_network_tests.py	/^test_wpa_supplicant = os.path.dirname($/;"	kind:variable	line:8
+test_home_page	../tests/brewer_network_tests.py	/^    def test_home_page(self):$/;"	kind:member	line:23
+test_slack_webhook_submission	../tests/brewer_network_tests.py	/^    def test_slack_webhook_submission(self):$/;"	kind:member	line:61
+test_submit_form	../tests/brewer_network_tests.py	/^    def test_submit_form(self):$/;"	kind:member	line:27
+test_submit_form_failure	../tests/brewer_network_tests.py	/^    def test_submit_form_failure(self):$/;"	kind:member	line:38
+test_supplicant_window	../tests/brewer_network_tests.py	/^    def test_supplicant_window(self):$/;"	kind:member	line:48
+test_wpa_supplicant	../tests/brewer_network_tests.py	/^test_wpa_supplicant = os.path.dirname($/;"	kind:variable	line:12
 time	../tests/brewer_network_tests.py	/^import time$/;"	kind:namespace	line:5
 unittest	../tests/brewer_network_tests.py	/^import unittest$/;"	kind:namespace	line:3
 url	../setup.py	/^    url='https:\/\/github.com\/llamicron\/brewer-network',  # use the URL to the github repo$/;"	kind:variable	line:9
 url_for	../brewer_network.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 urllib2	../internet.py	/^import urllib2$/;"	kind:namespace	line:1
-validate_form_submission	../brewer_network.py	/^def validate_form_submission(form):$/;"	kind:function	line:37
+validate_form_submission	../brewer_network.py	/^def validate_form_submission(form):$/;"	kind:function	line:38
 version	../setup.py	/^    version='0.1',$/;"	kind:variable	line:5
-write_wpa_supplicant	../brewer_network.py	/^def write_wpa_supplicant(ssid, password, priority):$/;"	kind:function	line:33
+write_wpa_supplicant	../brewer_network.py	/^def write_wpa_supplicant(ssid, password, priority):$/;"	kind:function	line:34

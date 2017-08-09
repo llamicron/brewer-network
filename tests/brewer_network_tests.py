@@ -11,7 +11,8 @@ import brewer_network
 
 test_wpa_supplicant = os.path.dirname(
     os.path.realpath(__file__)) + "/test_wpa_supplicant"
-
+test_webhook_file = os.path.dirname(
+    os.path.realpath(__file__)) + "/slack.webhook"
 
 class BrewerNetworkTestCase(unittest.TestCase):
     def setUp(self):
@@ -19,6 +20,7 @@ class BrewerNetworkTestCase(unittest.TestCase):
         if not os.path.isfile(test_wpa_supplicant):
             open(test_wpa_supplicant, "w")
         self.app.application.wpa_supplicant = test_wpa_supplicant
+        self.app.webhook_file = test_webhook_file
 
     def test_home_page(self):
         result = self.app.get("/")
@@ -57,6 +59,16 @@ class BrewerNetworkTestCase(unittest.TestCase):
             follow_redirects=True)
         assert "Set Brewpi Wifi" in result.data
         assert "network={" in result.data
+
+    def test_slack_webhook_submission(self):
+        result = self.app.get("/")
+        assert "Slack Webhook" in result.data
+        result = self.app.post("/write-webhook", data=dict(
+            webhook="http://http.slackttp.http/http"
+        ), follow_redirects=True)
+        assert "Slack Webhook Set" in result.data
+        assert "Set Brewpi Wifi" in result.data
+
 
     def tearDown(self):
         os.remove(test_wpa_supplicant)
