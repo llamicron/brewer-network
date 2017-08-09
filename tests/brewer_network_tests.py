@@ -20,7 +20,7 @@ class BrewerNetworkTestCase(unittest.TestCase):
         if not os.path.isfile(test_wpa_supplicant):
             open(test_wpa_supplicant, "w")
         self.app.application.wpa_supplicant = test_wpa_supplicant
-        self.app.webhook_file = test_webhook_file
+        self.app.application.webhook_file = test_webhook_file
 
     def test_home_page(self):
         result = self.app.get("/")

@@ -43,7 +43,8 @@ def handle_webhook_form_post():
         flash("Please enter your slack webhook.")
         return redirect("/")
     try:
-        write_webhook(request.form.webhook)
+        write_webhook(request.form["webhook"])
+        flash("Slack Webhook Set")
     except IOError:
         session["error"] = True
         flash("Failed (IOError): Can't write to file. Get Luke to fix this.")
