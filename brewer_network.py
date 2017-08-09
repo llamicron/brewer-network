@@ -47,6 +47,7 @@ def handle_webhook_form_post():
     try:
         write_webhook(request.form["webhook"])
         flash("Slack Webhook Set")
+        session["error"] = False
     except IOError:
         session["error"] = True
         flash("Failed (IOError): Can't write to file. Get Luke to fix this.")
