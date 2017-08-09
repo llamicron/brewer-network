@@ -46,4 +46,4 @@ def get_file_contents(filename):
         return list(filter(None, content_file.read().splitlines()))
 
 if __name__ == '__main__':
-    app.run("0.0.0.0", 5000)
+    app.run(debug=True)
