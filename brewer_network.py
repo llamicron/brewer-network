@@ -14,7 +14,8 @@ def index():
     return render_template(
         "index.html",
         file=app.wpa_supplicant,
-        file_lines=get_file_contents(app.wpa_supplicant))
+        file_lines=get_file_contents(app.wpa_supplicant),
+        webhook=get_webhook())
 
 
 @app.route("/write-supplicant", methods=["POST"])
@@ -36,7 +37,8 @@ def handle_supplicant_form_post():
             % app.wpa_supplicant)
     return redirect("/")
 
-@app.route("/write-webhook", methods = ["POST"])
+
+@app.route("/write-webhook", methods=["POST"])
 def handle_webhook_form_post():
     if not validate_form_submission(request.form):
         session["error"] = True
@@ -50,12 +52,19 @@ def handle_webhook_form_post():
         flash("Failed (IOError): Can't write to file. Get Luke to fix this.")
     return redirect("/")
 
+
 def write_webhook(webhook):
     with open(app.webhook_file, "w+") as file:
         file.truncate()
         file.write(webhook)
         return True
     return False
+
+
+def get_webhook():
+    with open(app.webhook_file, "r") as file:
+        return file.read()
+
 
 def write_wpa_supplicant(ssid, password, priority):
     wpa = open(app.wpa_supplicant, "a")

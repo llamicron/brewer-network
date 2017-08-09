@@ -47,6 +47,13 @@ class BrewerNetworkTestCase(unittest.TestCase):
             follow_redirects=True)
         assert "400 Bad Request" in result.data
 
+    def test_webhook_window(self):
+        result = self.app.get("/")
+        assert "Set Brewpi Wifi" in result.data
+        with open(self.app.application.webhook_file, "r") as file:
+            webhook = file.read()
+        assert webhook in result.data
+
     def test_supplicant_window(self):
         result = self.app.get("/")
         assert "network={" not in result.data
@@ -60,11 +67,11 @@ class BrewerNetworkTestCase(unittest.TestCase):
         assert "Set Brewpi Wifi" in result.data
         assert "network={" in result.data
 
-    def test_slack_webhook_submission(self):
+    def test_webhook_submission(self):
         result = self.app.get("/")
         assert "Slack Webhook" in result.data
         result = self.app.post("/write-webhook", data=dict(
-            webhook="http://http.slackttp.http/http"
+            webhook="http://not.a.real.hook.slack.com"
         ), follow_redirects=True)
         assert "Slack Webhook Set" in result.data
         assert "Set Brewpi Wifi" in result.data
