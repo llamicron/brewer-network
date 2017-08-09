@@ -22,7 +22,7 @@ class SetWifiTestCase(unittest.TestCase):
 
     def test_submit_form(self):
         result = self.app.post(
-            "/set-wifi",
+            "/write-supplicant",
             data=dict(
                 ssid="ssid from testing :)",
                 password="password from testing :D",
@@ -33,7 +33,7 @@ class SetWifiTestCase(unittest.TestCase):
 
     def test_submit_form_failure(self):
         result = self.app.post(
-            "/set-wifi",
+            "/write-supplicant",
             data=dict(
                 ssid="ssid from testing :)",
                 # No password field,
@@ -45,7 +45,7 @@ class SetWifiTestCase(unittest.TestCase):
         result = self.app.get("/")
         assert "network={" not in result.data
         result = self.app.post(
-            "/set-wifi",
+            "/write-supplicant",
             data=dict(
                 ssid="ssid from testing :)",
                 password="password from testing :D",

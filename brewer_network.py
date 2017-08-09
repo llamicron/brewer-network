@@ -8,13 +8,13 @@ app.wpa_supplicant = "/Users/llamicron/test"
 @app.route("/")
 def index():
     return render_template(
-        "set_wifi.html",
+        "index.html",
         file=app.wpa_supplicant,
         file_lines=get_file_contents(app.wpa_supplicant)
     )
 
 
-@app.route("/set-wifi", methods = ["POST"])
+@app.route("/write_supplicant", methods = ["POST"])
 def handle_form_post():
     if not validate_form_submission(request.form):
         session['error'] = True

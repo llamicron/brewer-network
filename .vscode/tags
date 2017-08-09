@@ -7,12 +7,12 @@
 Flask	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 SetWifiTestCase	../set_wifi_tests.py	/^class SetWifiTestCase(unittest.TestCase):$/;"	kind:class	line:12
 app	../set_wifi.py	/^app = Flask(__name__)$/;"	kind:variable	line:2
-check_connection	../network.py	/^def check_connection():$/;"	kind:function	line:3
+check_connection	../internet.py	/^def check_connection():$/;"	kind:function	line:6
 flash	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 get_file_contents	../set_wifi.py	/^def get_file_contents(filename):$/;"	kind:function	line:44
 handle_form_post	../set_wifi.py	/^def handle_form_post():$/;"	kind:function	line:18
 index	../set_wifi.py	/^def index():$/;"	kind:function	line:9
-network.py	../network.py	1;"	kind:file	line:1
+internet.py	../internet.py	1;"	kind:file	line:1
 os	../set_wifi_tests.py	/^import os$/;"	kind:namespace	line:1
 redirect	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
 render_template	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
@@ -33,6 +33,6 @@ test_wpa_supplicant	../set_wifi_tests.py	/^test_wpa_supplicant = os.path.dirname
 time	../set_wifi_tests.py	/^import time$/;"	kind:namespace	line:5
 unittest	../set_wifi_tests.py	/^import unittest$/;"	kind:namespace	line:3
 url_for	../set_wifi.py	/^from flask import Flask, request, render_template, url_for, redirect, session, flash$/;"	kind:namespace	line:1
-urllib2	../network.py	/^import urllib2$/;"	kind:namespace	line:1
+urllib2	../internet.py	/^import urllib2$/;"	kind:namespace	line:1
 validate_form_submission	../set_wifi.py	/^def validate_form_submission(form):$/;"	kind:function	line:38
 write_wpa_supplicant	../set_wifi.py	/^def write_wpa_supplicant(ssid, password, priority):$/;"	kind:function	line:33
