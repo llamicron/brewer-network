@@ -28,6 +28,8 @@ def handle_supplicant_form_post():
                              request.form['priority'])
         session['error'] = False
         flash("Successful. Restart your Pi to connect.")
+        # Switch to env network
+        # Ultimate happy path
     except IOError:
         session["error"] = True
         flash(
