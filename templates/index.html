@@ -18,12 +18,17 @@
       <div class="container">
         <div class="columns">
           <div class="column is-8 is-offset-2">
+
+            <!-- Title -->
             <div class="has-text-centered">
               <h1 class="title">Set Brewpi Wifi</h1>
             </div>
+
             <hr>
+
+            <!-- Set Webhook Form Box  -->
             <div class="box">
-              <!-- Write Webhook Form -->
+              <!-- Set Webhook Form -->
               <form action="/write-webhook" method="POST">
                 <!-- Webhook Text Field -->
                 <div class="field">
@@ -43,6 +48,7 @@
                 </div>
               </form>
             </div>
+
             <div class="box">
               <!-- Write Supplicant Form -->
               <form action="/write-supplicant" method="POST">
@@ -93,6 +99,7 @@
                 </div>
               </form>
             </div>
+
             {% with messages = get_flashed_messages() %}
               {% if messages %}
                 {% if session["error"] %}
