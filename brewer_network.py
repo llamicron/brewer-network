@@ -20,7 +20,7 @@ def index():
 def handle_supplicant_form_post():
     if not validate_form_submission(request.form):
         session['error'] = True
-        flash("Please fill out the form to the right ->")
+        flash("Please fill out the form above")
         return redirect("/")
 
     try:
@@ -44,11 +44,11 @@ def handle_webhook_form_post():
         return redirect("/")
     try:
         write_webhook(request.form["webhook"])
-        flash("Slack Webhook Set")
         session["error"] = False
+        flash("Slack Webhook Set")
     except IOError:
-        session["error"] = True
         flash("Failed (IOError): Can't write to file. Get Luke to fix this.")
+        session["error"] = True
     return redirect("/")
 
 
@@ -56,6 +56,7 @@ def write_webhook(webhook):
     with open(app.webhook_file, "w+") as file:
         file.truncate()
         file.write(webhook)
+        session["webhook_submitted"] = True
         return True
     return False
 
