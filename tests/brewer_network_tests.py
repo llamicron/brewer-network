@@ -6,7 +6,6 @@ import time
 
 # Allows for importing from parent directory
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
-
 import brewer_network
 
 test_wpa_supplicant = os.path.dirname(
@@ -26,7 +25,7 @@ class BrewerNetworkTestCase(unittest.TestCase):
         result = self.app.get("/")
         assert "Set Brewpi Wifi" in result.data
 
-    def test_submit_form(self):
+    def test_submit_supplicant_form(self):
         result = self.app.post(
             "/write-supplicant",
             data=dict(
@@ -37,7 +36,7 @@ class BrewerNetworkTestCase(unittest.TestCase):
         assert "Successful" in result.data
         assert "You don't have permission to write" not in result.data
 
-    def test_submit_form_failure(self):
+        # Intentional Failure to check validation
         result = self.app.post(
             "/write-supplicant",
             data=dict(
@@ -46,6 +45,21 @@ class BrewerNetworkTestCase(unittest.TestCase):
                 priority="5"),
             follow_redirects=True)
         assert "400 Bad Request" in result.data
+
+    def test_write_to_supplicant(self):
+        with open(test_wpa_supplicant, 'w') as file:
+            file.truncate()
+
+        self.app.post("/write-supplicant",
+            data=dict(
+                ssid="ssid from testing :)",
+                password="password from testing :D",
+                priority="7"),
+            follow_redirects=True)
+
+        with open(test_wpa_supplicant, 'r') as file:
+            assert "ssid from testing :)" in file.read()
+
 
     def test_webhook_window(self):
         result = self.app.get("/")
