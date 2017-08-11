@@ -26,19 +26,19 @@
 
             <hr>
 
-            <!-- Set Webhook Form Box  -->
+            <!-- Set Token Form Box  -->
             <div class="box">
-              <!-- Set Webhook Form -->
-              <form action="/write-webhook" method="POST">
-                <!-- Webhook Text Field -->
+              <!-- Set Token Form -->
+              <form action="/write-token" method="POST">
+                <!-- Token Text Field -->
                 <div class="field">
-                  <label class="label">Slack Webhook</label>
+                  <label class="label">Slack API Token</label>
                   <div class="control">
-                    <input class="input" name="webhook" type="text" placeholder="Slack Webhook" value="{{ webhook }}">
+                    <input class="input" name="token" type="text" placeholder="Slack API Token" value="{{ token }}">
                   </div>
                 </div>
 
-                <!-- Webhook Form Submit Button -->
+                <!-- Token Form Submit Button -->
                 <div class="columns">
                   <div class="column is-2">
                     <button type="submit" class="button is-primary">
@@ -80,7 +80,7 @@
                 <div class="columns">
                   <div class="column">
                     <div class="control">
-                      {% if session["webhook_submitted"] %}
+                      {% if session["token_submitted"] %}
                         <button class="button is-primary">
                       {% else %}
                         <button class="button is-primary" disabled>
@@ -92,7 +92,7 @@
                   <div class="column is-8 is-pulled-right">
                     <article class="message is-warning">
                       <div class="message-body">
-                        Important: Set Slack webhook before submitting this form.
+                        Important: Set Slack token before submitting this form.
                       </div>
                     </article>
                   </div>
