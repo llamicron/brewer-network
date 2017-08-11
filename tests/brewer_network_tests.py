@@ -3,24 +3,29 @@ import sys
 import unittest
 import tempfile
 import time
-import set_wifi
+
+# Allows for importing from parent directory
+sys.path.insert(1, os.path.join(sys.path[0], '..'))
+import brewer_network
 
 test_wpa_supplicant = os.path.dirname(
     os.path.realpath(__file__)) + "/test_wpa_supplicant"
+test_webhook_file = os.path.dirname(
+    os.path.realpath(__file__)) + "/slack.webhook"
 
-
-class SetWifiTestCase(unittest.TestCase):
+class BrewerNetworkTestCase(unittest.TestCase):
     def setUp(self):
-        self.app = set_wifi.app.test_client()
+        self.app = brewer_network.app.test_client()
         if not os.path.isfile(test_wpa_supplicant):
             open(test_wpa_supplicant, "w")
         self.app.application.wpa_supplicant = test_wpa_supplicant
+        self.app.application.webhook_file = test_webhook_file
 
     def test_home_page(self):
         result = self.app.get("/")
         assert "Set Brewpi Wifi" in result.data
 
-    def test_submit_form(self):
+    def test_submit_supplicant_form(self):
         result = self.app.post(
             "/write-supplicant",
             data=dict(
@@ -31,7 +36,7 @@ class SetWifiTestCase(unittest.TestCase):
         assert "Successful" in result.data
         assert "You don't have permission to write" not in result.data
 
-    def test_submit_form_failure(self):
+        # Intentional Failure to check validation
         result = self.app.post(
             "/write-supplicant",
             data=dict(
@@ -40,6 +45,28 @@ class SetWifiTestCase(unittest.TestCase):
                 priority="5"),
             follow_redirects=True)
         assert "400 Bad Request" in result.data
+
+    def test_write_to_supplicant(self):
+        with open(test_wpa_supplicant, 'w') as file:
+            file.truncate()
+
+        self.app.post("/write-supplicant",
+            data=dict(
+                ssid="ssid from testing :)",
+                password="password from testing :D",
+                priority="7"),
+            follow_redirects=True)
+
+        with open(test_wpa_supplicant, 'r') as file:
+            assert "ssid from testing :)" in file.read()
+
+
+    def test_webhook_window(self):
+        result = self.app.get("/")
+        assert "Set Brewpi Wifi" in result.data
+        with open(self.app.application.webhook_file, "r") as file:
+            webhook = file.read()
+        assert webhook in result.data
 
     def test_supplicant_window(self):
         result = self.app.get("/")
@@ -53,6 +80,16 @@ class SetWifiTestCase(unittest.TestCase):
             follow_redirects=True)
         assert "Set Brewpi Wifi" in result.data
         assert "network={" in result.data
+
+    def test_webhook_submission(self):
+        result = self.app.get("/")
+        assert "Slack Webhook" in result.data
+        result = self.app.post("/write-webhook", data=dict(
+            webhook="http://not.a.real.hook.slack.com"
+        ), follow_redirects=True)
+        assert "Slack Webhook Set" in result.data
+        assert "Set Brewpi Wifi" in result.data
+
 
     def tearDown(self):
         os.remove(test_wpa_supplicant)

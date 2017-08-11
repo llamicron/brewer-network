@@ -2,11 +2,11 @@
   "version": "0.1.0",
   "tasks": [
     {
-      "taskName": "Unit Test",
+      "taskName": "brewer_network",
       "suppressTaskName": true,
       "command": "python",
       "args": [
-        "set_wifi_tests.py"
+        "tests/brewer_network_tests.py",
       ],
       "isTestCommand": true
     }
